@@ -1,0 +1,321 @@
+/* 🎨 General Styles */
+.primary-school {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: url("/images/primary-bg.jpg") no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔹 Header */
+.vc-header {
+  background: rgba(15, 21, 27, 0.9);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.vc-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.vc-icon {
+  margin-right: 8px;
+}
+
+.vc-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.vc-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+.vc-nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.vc-nav ul li a:hover {
+  color: #ffcc00;
+}
+
+/* 🔹 Hamburger for mobile */
+.vc-hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.vc-line {
+  width: 25px;
+  height: 3px;
+  background: white;
+}
+
+/* 🔹 Form Section */
+.form-background {
+  background: rgba(255, 255, 255, 0.96);
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 950px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-header h1 {
+  font-size: 2rem;
+  color: #003366;
+}
+
+.form-header p {
+  font-size: 1rem;
+  color: #555;
+}
+
+
+
+.progress-bar {
+  position: static;   /* default behavior */
+  margin: 20px auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.progress-step {
+  flex: 0 0 auto;          /* stops stretching */
+  min-width: 120px;        /* fixed width */
+  text-align: center;
+  font-size: 0.85rem;
+  padding: 8px;
+  border-bottom: 3px solid #ccc;
+  color: #666;
+}
+
+.progress-step.active {
+  border-color: #003366;
+  font-weight: bold;
+  color: #003366;
+}
+
+
+/* 🔹 Form Steps */
+.form-step {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-step h2 {
+  text-align: center;
+  color: #003366;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+  padding: 8px 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+/* 🔹 Navigation Buttons */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-navigation button {
+  background: #003366;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-navigation button:hover {
+  background: #0055aa;
+}
+
+.form-navigation button[disabled] {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* 🔹 Payment List */
+.payment-list {
+  list-style: none;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.payment-list li {
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+/* 🔹 Student Code Box */
+.student-code-box {
+  background: #003366;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 10px auto;
+  width: fit-content;
+}
+
+/* 🔹 Popup */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔹 Success Box */
+.success-box {
+  text-align: center;
+  padding: 30px;
+}
+
+.student-code {
+  font-weight: bold;
+  color: #003366;
+}
+
+.download-btn {
+  background: #28a745;
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.download-btn:hover {
+  background: #1e7e34;
+}
+
+/* ✅ Media Queries */
+@media (max-width: 1000px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 750px) {
+  .vc-nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #003366;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .vc-nav.open {
+    display: flex;
+  }
+
+  .vc-hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 350px) {
+  .form-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .form-header p {
+    font-size: 0.8rem;
+  }
+
+  .student-code-box {
+    font-size: 1rem;
+    padding: 8px;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1200px) {
+  .form-background {
+    max-width: 1100px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .form-background {
+    max-width: 1300px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .form-background {
+    max-width: 1500px;
+  }
+}
+
+@media (min-width: 2500px) {
+  .form-background {
+    max-width: 1800px;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,379 @@
+/* ================================
+   Parents Forum Styles (Scoped)
+   ================================ */
+
+.forum-page {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: url("../assets/Boarding-Common-Room-e1538503886336.jpg") no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Header / Navbar ===== */
+.forum-page .vc-header {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.forum-page .vc-logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.forum-page .vc-icon {
+  margin-right: 8px;
+}
+
+.forum-page .vc-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.forum-page .vc-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.forum-page .vc-nav ul li a:hover {
+  color: #ffcc00;
+}
+
+/* Hamburger for mobile */
+.forum-page .vc-hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.forum-page .vc-hamburger .vc-line {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+/* ===== Login Section ===== */
+.forum-page .login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 40px 20px;
+}
+
+.forum-page .login-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.forum-page .login-card h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #333;
+}
+
+.forum-page .login-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.forum-page .login-card input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.forum-page .login-card button {
+  width: 100%;
+  padding: 10px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.forum-page .login-card button:hover {
+  background: #005fa3;
+}
+
+.forum-page .error-msg {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* ===== Forum Section ===== */
+.forum-page .forum-section {
+  flex: 1;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  margin: 20px;
+  border-radius: 12px;
+}
+
+.forum-page .welcome-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.forum-page .logout-btn {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s ease;
+}
+
+.forum-page .logout-btn:hover {
+  background: #c72c38;
+}
+
+/* ===== New Post Card ===== */
+.forum-page .new-post-card {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.forum-page .new-post-card h3 {
+  margin-bottom: 10px;
+}
+
+.forum-page .new-post-card input,
+.forum-page .new-post-card textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.forum-page .new-post-card button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.forum-page .new-post-card button:hover {
+  background: #005fa3;
+}
+
+/* ===== Discussions ===== */
+.forum-page .discussions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.forum-page .discussion-card {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.forum-page .discussion-card h4 {
+  margin-bottom: 6px;
+}
+
+.forum-page .replies {
+  margin-top: 10px;
+  padding-left: 15px;
+  border-left: 3px solid #eee;
+}
+
+.forum-page .reply {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.forum-page .reply-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.forum-page .reply-box input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.forum-page .reply-box button {
+  padding: 8px 12px;
+  background: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.forum-page .reply-box button:hover {
+  background: #005fa3;
+}
+
+/* ===== Footer ===== */
+.forum-page .footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
+  font-size: 14px;
+}
+
+/* ===== Floating WhatsApp ===== */
+.forum-page .floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 200;
+}
+
+.forum-page .floating-whatsapp img {
+  width: 40px;
+  height: 40px;
+}
+
+/* ================================
+   Responsive Breakpoints
+   ================================ */
+
+/* Small Phones - 350px */
+@media (max-width: 350px) {
+  .forum-page .login-card,
+  .forum-page .new-post-card,
+  .forum-page .discussion-card {
+    padding: 15px;
+  }
+  .forum-page .vc-nav ul {
+    font-size: 12px;
+  }
+}
+
+/* Phones - 750px */
+@media (max-width: 750px) {
+  .forum-page .vc-nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(0,0,0,0.95);
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    border-radius: 8px;
+  }
+  .forum-page .vc-nav.open ul {
+    display: flex;
+  }
+  .forum-page .vc-hamburger {
+    display: block;
+  }
+  .forum-page .welcome-banner {
+    flex-direction: column;
+  }
+}
+
+/* Tablets - 850px */
+@media (max-width: 850px) {
+  .forum-page .forum-section {
+    margin: 10px;
+    padding: 20px;
+  }
+}
+
+/* Medium Screens - 1000px */
+@media (max-width: 1000px) {
+  .forum-page .vc-nav ul {
+    gap: 15px;
+  }
+  .forum-page .new-post-card,
+  .forum-page .discussion-card {
+    padding: 15px;
+  }
+}
+
+/* Large Screens - 1200px */
+@media (max-width: 1200px) {
+  .forum-page .vc-header {
+    padding: 12px 20px;
+  }
+  .forum-page .forum-section {
+    padding: 30px 15px;
+  }
+}
+
+/* Extra Large Screens - 1500px */
+@media (max-width: 1500px) {
+  .forum-page .forum-section {
+    max-width: 1200px;
+    margin: auto;
+  }
+}
+
+/* Wide Screens - 1900px */
+@media (min-width: 1900px) {
+  .forum-page {
+    font-size: 18px;
+  }
+  .forum-page .forum-section {
+    max-width: 1400px;
+    margin: auto;
+  }
+}
+
+/* Ultra-Wide Screens - 2500px */
+@media (min-width: 2500px) {
+  .forum-page {
+    font-size: 20px;
+  }
+  .forum-page .forum-section {
+    max-width: 1600px;
+    margin: auto;
+  }
+}

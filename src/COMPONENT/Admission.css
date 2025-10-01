@@ -1,0 +1,347 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #004aad;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav ul li a:hover {
+  color: #ffd700;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger .line {
+  width: 25px;
+  height: 3px;
+  background: white;
+}
+
+/* Hero */
+.admissions-hero {
+  background: linear-gradient(to right, #0d2e5a, #10151a);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.admissions-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.admissions-hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Tabs */
+.admissions-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.tab {
+  padding: 10px 20px;
+  background: #004aad;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.tab:hover,
+.tab.active {
+  background: #00327a;
+}
+
+/* Content */
+.admissions-content {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Policy */
+
+
+
+
+/* Policy */
+.admissions-policy {
+  background: #f1f1f1;
+  padding: 40px 20px;
+  text-align: center;       /* ✅ center all text */
+  display: flex;            /* ✅ use flexbox */
+  flex-direction: column;   /* stack vertically */
+  align-items: center;      /* center horizontally */
+  justify-content: center;  /* center vertically */
+}
+
+.admissions-policy h2 {
+  margin-bottom: 15px;
+}
+
+.admissions-policy p {
+  max-width: 700px;   /* ✅ keep it readable */
+  margin: 0 auto 20px auto;
+  line-height: 1.6;
+}
+
+.download-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* ✅ center buttons */
+  gap: 15px;
+}
+
+.download-buttons .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #004aad;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.download-buttons .btn:hover {
+  background: #00327a;
+}
+
+.admissions-policy {
+  background: #f1f1f1;
+  padding: 40px 20px;
+}
+
+.admissions-policy h2 {
+  margin-bottom: 15px;
+}
+
+.download-buttons {
+  margin-top: 20px;
+}
+
+.download-buttons .btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background: #004aad;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.download-buttons .btn:hover {
+  background: #00327a;
+}
+
+/* Contact */
+.admissions-contact {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.admissions-contact h2 {
+  margin-bottom: 10px;
+}
+
+/* Footer */
+.admissions-footer {
+  background: #004aad;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  .admissions-hero h1 {
+    font-size: 2rem;
+  }
+  .admissions-hero p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #004aad;
+    padding: 20px 0;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .admissions-tabs {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo span {
+    font-size: 1.2rem;
+  }
+
+  .admissions-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .admissions-hero p {
+    font-size: 0.9rem;
+  }
+
+  .tab {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
+/* Extra small devices (very small phones, <360px) */
+@media (max-width: 360px) {
+  .nav-logo span {
+    font-size: 1rem;
+  }
+
+  .admissions-hero {
+    padding: 70px 15px;
+  }
+
+  .admissions-hero h1 {
+    font-size: 1.3rem;
+  }
+
+  .admissions-hero p {
+    font-size: 0.8rem;
+  }
+
+  .tab {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .download-buttons .btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Large desktops (1200px – 1600px) */
+@media (min-width: 1200px) {
+  .admissions-hero {
+    padding: 120px 40px;
+  }
+
+  .admissions-hero h1 {
+    font-size: 3rem;
+  }
+
+  .admissions-hero p {
+    font-size: 1.3rem;
+    max-width: 800px;
+  }
+
+  .admissions-content {
+    max-width: 1000px;
+  }
+
+  .admissions-policy p {
+    max-width: 800px;
+  }
+}
+
+/* Extra large screens (1600px and above, big TVs / ultra-wide) */
+@media (min-width: 1600px) {
+  .admissions-hero {
+    padding: 150px 60px;
+  }
+
+  .admissions-hero h1 {
+    font-size: 3.5rem;
+  }
+
+  .admissions-hero p {
+    font-size: 1.5rem;
+  }
+
+  .admissions-content {
+    max-width: 1200px;
+  }
+
+  .admissions-policy p {
+    max-width: 900px;
+    font-size: 1.2rem;
+  }
+
+  .download-buttons .btn {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+  }
+}

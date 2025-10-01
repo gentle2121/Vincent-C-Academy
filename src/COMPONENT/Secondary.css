@@ -1,0 +1,255 @@
+/* --- Secondary Page Styles --- */
+
+/* Hero section (darker, bolder look for older students) */
+.secondary-hero {
+  background: linear-gradient(to right, #0b243d, #081727);
+  color: #fff;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.secondary-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.secondary-hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Subjects section */
+.section.subjects {
+  background-color: #f4f7fb;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.subject-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.subject-list li {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  padding: 8px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.subject-list li:hover {
+  transform: scale(1.03);
+  background-color: #eaf3ff;
+}
+
+/* Clubs section */
+.section.clubs {
+  background-color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.club-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.club-list li {
+  padding: 12px;
+  background: #f4f7fb;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Leadership section */
+.section.leadership {
+  background: #fdfdfd;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section.leadership .alumni-img {
+  margin-top: 20px;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Header Navigation --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  background: rgba(0, 0, 0, 0.6); /* transparent black overlay */
+  backdrop-filter: blur(6px);     /* soft blur behind header */
+  
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo text + icon (always black) */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-logo span {
+  color: #000 !important;   /* force black */
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.nav-logo .icon {
+  color: #000 !important;   /* black graduation cap */
+  width: 26px;
+  height: 26px;
+}
+
+/* Nav links */
+.nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav ul li a {
+  color: #fff;  /* white links */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+  color: #ffcc00; /* gold hover effect */
+}
+
+
+
+/* =================== Extra Media Queries =================== */
+
+/* Very small devices (≤ 360px) */
+@media (max-width: 360px) {
+  .secondary-hero {
+    padding: 60px 15px;
+  }
+
+  .secondary-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .secondary-hero p {
+    font-size: 0.9rem;
+  }
+
+  .nav-logo span {
+    font-size: 1rem;
+  }
+
+  .nav ul {
+    gap: 10px;
+  }
+
+  .subject-list li,
+  .club-list li {
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+}
+
+/* Small phones (361px – 480px) */
+@media (min-width: 361px) and (max-width: 480px) {
+  .secondary-hero h1 {
+    font-size: 2rem;
+  }
+
+  .secondary-hero p {
+    font-size: 1rem;
+  }
+}
+
+/* Large laptops / small desktops (1280px – 1439px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .secondary-hero h1 {
+    font-size: 3.2rem;
+  }
+
+  .secondary-hero p {
+    font-size: 1.3rem;
+  }
+}
+
+/* Ultra-wide desktops (≥ 1920px) */
+@media (min-width: 1920px) {
+  .secondary-hero {
+    padding: 140px 40px;
+  }
+
+  .secondary-hero h1 {
+    font-size: 4rem;
+  }
+
+  .secondary-hero p {
+    font-size: 1.5rem;
+    max-width: 900px;
+  }
+
+  .section {
+    padding: 80px 40px;
+  }
+
+  .club-list {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+/* Super ultra-wide monitors (≥ 2560px) */
+@media (min-width: 2560px) {
+  .secondary-hero h1 {
+    font-size: 5rem;
+  }
+
+  .secondary-hero p {
+    font-size: 1.8rem;
+    max-width: 1100px;
+  }
+
+  .section {
+    padding: 100px 60px;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  .club-list {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+
+
+

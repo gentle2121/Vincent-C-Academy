@@ -3,6 +3,8 @@ import { GraduationCap, LogOut, MessageSquarePlus } from "lucide-react";
 import "./Parentforum.css";
 import BG_URL from "../assets/Boarding-Common-Room-e1538503886336.jpg";
 
+const API_URL = "https://backend-one-py48.onrender.com/api/forum";
+
 export default function ParentsForum(): JSX.Element {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [studentCode, setStudentCode] = useState("");
@@ -16,6 +18,7 @@ export default function ParentsForum(): JSX.Element {
   const [replyInputs, setReplyInputs] = useState<{ [key: string]: string }>({});
   const [replying, setReplying] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [fetching, setFetching] = useState(false);
 
   // ✅ Login handler
   const handleLogin = async (e: FormEvent) => {
@@ -24,7 +27,7 @@ export default function ParentsForum(): JSX.Element {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:7600/api/forum/login", {
+      const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ studentCode, parentName }),
@@ -51,13 +54,14 @@ export default function ParentsForum(): JSX.Element {
     const token = localStorage.getItem("forumToken");
     if (!token) return;
 
+    setFetching(true);
     try {
-      const res = await fetch("http://localhost:7600/api/forum/discussions", {
+      const res = await fetch(`${API_URL}/discussions`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
 
-      if (data.success) {
+      if (res.ok && data.success) {
         setDiscussions(Array.isArray(data.discussions) ? data.discussions : []);
         setIsAuthenticated(true);
         if (data.parent) setParentName(data.parent);
@@ -68,6 +72,8 @@ export default function ParentsForum(): JSX.Element {
       }
     } catch (err) {
       setError("Could not load discussions. Please try again.");
+    } finally {
+      setFetching(false);
     }
   };
 
@@ -79,7 +85,7 @@ export default function ParentsForum(): JSX.Element {
 
     const token = localStorage.getItem("forumToken");
     try {
-      const res = await fetch("http://localhost:7600/api/forum/discussions", {
+      const res = await fetch(`${API_URL}/discussions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -110,17 +116,14 @@ export default function ParentsForum(): JSX.Element {
 
     const token = localStorage.getItem("forumToken");
     try {
-      const res = await fetch(
-        `http://localhost:7600/api/forum/discussions/${discussionId}/replies`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ reply: replyInputs[discussionId] }),
-        }
-      );
+      const res = await fetch(`${API_URL}/discussions/${discussionId}/replies`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ reply: replyInputs[discussionId] }),
+      });
 
       const data = await res.json();
       if (res.ok && data.success) {
@@ -143,34 +146,34 @@ export default function ParentsForum(): JSX.Element {
   return (
     <div className="forum-page">
       {/* Navigation Header */}
-           <header className="vc-header">
-                   <div className="vc-logo">
-                     <GraduationCap className="vc-icon" color="#fff" />
-                     <span style={{ color: "#fff" }}>Vincent C Academy</span>
-                   </div>
-           
-                   {/* Nav Links */}
-                   <nav className={menuOpen ? "vc-nav open" : "vc-nav"}>
-                     <ul>
-                       <li><a href="/" onClick={() => setMenuOpen(false)}>Home</a></li>
-                       <li><a href="/Aboutus" onClick={() => setMenuOpen(false)}>About Us</a></li>
-                       <li><a href="/Admissions" onClick={() => setMenuOpen(false)}>Admissions</a></li>
-                       <li><a href="/Event" onClick={() => setMenuOpen(false)}>Event</a></li>
-                       <li><a href="/Contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
-                       <li><a href="/Parentforum" onClick={() => setMenuOpen(false)}>Parents Forum</a></li>
-                     </ul>
-                   </nav>
-           
-                   {/* Hamburger */}
-                   <div
-                     className={`vc-hamburger ${menuOpen ? "active" : ""}`}
-                     onClick={() => setMenuOpen(!menuOpen)}
-                   >
-                     <div className="vc-line"></div>
-                     <div className="vc-line"></div>
-                     <div className="vc-line"></div>
-                   </div>
-                 </header>
+      <header className="vc-header">
+        <div className="vc-logo">
+          <GraduationCap className="vc-icon" color="#fff" />
+          <span style={{ color: "#fff" }}>Vincent C Academy</span>
+        </div>
+
+        {/* Nav Links */}
+        <nav className={menuOpen ? "vc-nav open" : "vc-nav"}>
+          <ul>
+            <li><a href="/" onClick={() => setMenuOpen(false)}>Home</a></li>
+            <li><a href="/Aboutus" onClick={() => setMenuOpen(false)}>About Us</a></li>
+            <li><a href="/Admissions" onClick={() => setMenuOpen(false)}>Admissions</a></li>
+            <li><a href="/Event" onClick={() => setMenuOpen(false)}>Event</a></li>
+            <li><a href="/Contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+            <li><a href="/Parentforum" onClick={() => setMenuOpen(false)}>Parents Forum</a></li>
+          </ul>
+        </nav>
+
+        {/* Hamburger */}
+        <div
+          className={`vc-hamburger ${menuOpen ? "active" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <div className="vc-line"></div>
+          <div className="vc-line"></div>
+          <div className="vc-line"></div>
+        </div>
+      </header>
 
       {/* ✅ Forum Content */}
       {!isAuthenticated ? (
@@ -241,7 +244,9 @@ export default function ParentsForum(): JSX.Element {
 
           {/* ✅ Discussions */}
           <div className="discussions">
-            {discussions.length > 0 ? (
+            {fetching ? (
+              <p>Loading discussions...</p>
+            ) : discussions.length > 0 ? (
               discussions.map((d, idx) => (
                 <div key={d._id || idx} className="discussion-card">
                   <h4>📌 {d.title}</h4>
@@ -290,7 +295,7 @@ export default function ParentsForum(): JSX.Element {
         </section>
       )}
 
-     {/* Footer */}
+      {/* Footer */}
       <footer className="footer">
         © {new Date().getFullYear()} Vincent c Academy. All rights reserved.
       </footer>

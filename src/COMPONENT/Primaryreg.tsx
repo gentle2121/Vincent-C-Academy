@@ -54,11 +54,17 @@ export default function PrimaryRegistration() {
       // Exclude file objects
       const { passportPhoto, paymentProof, ...studentInfo } = formData;
 
-      const response = await fetch("http://localhost:7600/api/PrimaryStudent", {
-        method: "POST",
-        body: JSON.stringify(studentInfo),
-        headers: { "Content-Type": "application/json" },
-      });
+
+
+
+
+
+
+       const response = await fetch("https://backend-one-py48.onrender.com/api/PrimaryStudent", {
+         method: "POST",
+         body: JSON.stringify(studentInfo),
+         headers: { "Content-Type": "application/json" },
+       });
 
       const data = await response.json();
       if (data.success) {
@@ -88,10 +94,15 @@ export default function PrimaryRegistration() {
       }
       formDataToSend.append("studentCode", studentCode);
 
-      const response = await fetch("http://localhost:7600/api/PrimaryStudent/finalize", {
-        method: "POST",
-        body: formDataToSend,
-      });
+      const response = await fetch("https://backend-one-py48.onrender.com/api/PrimaryStudent/finalize", {
+      method: "POST",
+      body: formDataToSend, // don't set Content-Type!
+    });
+
+      // const response = await fetch("https://backend-one-py48.onrender.com", {
+      //   method: "POST",
+      //   body: formDataToSend,
+      // });
 
       const data = await response.json();
 

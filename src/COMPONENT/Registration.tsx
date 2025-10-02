@@ -65,11 +65,18 @@ export default function Registration() {
     // ✅ Step 1: Register student
     if (step === 1) {
       try {
-        const response = await fetch("http://localhost:7600/api/Student", {
-          method: "POST",
-          body: JSON.stringify(formData),
-          headers: { "Content-Type": "application/json" },
-        });
+
+
+        const response = await fetch("https://backend-one-py48.onrender.com/api/Student", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+        // const response = await fetch("https://backend-one-py48.onrender.com", {
+        //   method: "POST",
+        //   body: JSON.stringify(formData),
+        //   headers: { "Content-Type": "application/json" },
+        // });
 
         const data = await response.json();
         if (data.success) {
@@ -99,10 +106,17 @@ export default function Registration() {
     }
     formDataToSend.append("studentCode", studentCode);
 
-    const response = await fetch("http://localhost:7600/api/Student/finalize", {
+
+const response = await fetch("https://backend-one-py48.onrender.com/api/Student/finalize", {
       method: "POST",
-      body: formDataToSend,
+      body: formDataToSend, // don't set Content-Type!
     });
+
+
+    // const response = await fetch("https://backend-one-py48.onrender.com", {
+    //   method: "POST",
+    //   body: formDataToSend,
+    // });
 
     const data = await response.json();
 

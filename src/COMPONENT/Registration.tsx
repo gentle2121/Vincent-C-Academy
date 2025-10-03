@@ -64,35 +64,38 @@ export default function Registration() {
 
     // ✅ Step 1: Register student
     if (step === 1) {
-      try {
+  try {
+    const formDataToSend = new FormData();
 
-
-        const response = await fetch("https://backend-one-py48.onrender.com/api/Student", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-        // const response = await fetch("https://backend-one-py48.onrender.com", {
-        //   method: "POST",
-        //   body: JSON.stringify(formData),
-        //   headers: { "Content-Type": "application/json" },
-        // });
-
-        const data = await response.json();
-        if (data.success) {
-          setStudentCode(data.studentCode);
-          setStep(2);
-        } else {
-          alert("Error: " + data.error);
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Failed to create student. Try again.");
-      } finally {
-        setLoading(false);
+    // append all fields
+    for (const key in formData) {
+      const value = (formData as any)[key];
+      if (value !== null && value !== "") {
+        formDataToSend.append(key, value);
       }
-      return;
     }
+
+    const response = await fetch("https://backend-one-py48.onrender.com/api/Student", {
+      method: "POST",
+      body: formDataToSend, // don't set Content-Type, browser will add it
+    });
+
+    const data = await response.json();
+    if (response.ok && data.success) {
+      setStudentCode(data.studentCode);
+      setStep(2);
+    } else {
+      alert("Error: " + (data.message || data.error || "Unknown error"));
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Failed to create student. Try again.");
+  } finally {
+    setLoading(false);
+  }
+  return;
+}
+
 
     // ✅ Step 6: Final Submit
    if (step === 6) {

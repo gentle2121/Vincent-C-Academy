@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./AboutUs.css";
+import "./Aboutus.css";
 import { GraduationCap } from "lucide-react";
 
 import image1 from "../assets/african-school-buldings-africa-buildings-lawn-grasses-trees-nigeria-africa-77945024.webp";

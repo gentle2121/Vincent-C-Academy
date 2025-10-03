@@ -121,16 +121,7 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact Info
-      <section className="contact-section">
-  <h3>Admissions Department</h3>
-  <p>Admissions Officer: +234 810 297 4792</p>
-  <p>Email: nnajivincentchidera@gmail.com</p>
-  <p>Mon – Fri: 9:00 A.M. – 4:00 P.M.</p>
-  <div className="social-links">
-    <a href="">Facebook</a> | <a href="">Instagram</a>
-  </div>
-</section> */}
+     
 
 
       {/* Footer */}

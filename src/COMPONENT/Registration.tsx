@@ -113,10 +113,6 @@ const response = await fetch("https://backend-one-py48.onrender.com/api/Student/
     });
 
 
-    // const response = await fetch("https://backend-one-py48.onrender.com", {
-    //   method: "POST",
-    //   body: formDataToSend,
-    // });
 
     const data = await response.json();
 

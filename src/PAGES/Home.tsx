@@ -1,18 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, Info, Mail, Phone, ArrowRight } from "lucide-react";
-
-import "./Home.css"; // 👈 external stylesheet
-
-const BG_URL =
-  "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2400&auto=format&fit=crop";
+import "./Home.css";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.17, 0.67, 0.83, 0.67] } },
 };
 
-export default function SchoolHomepage(): JSX.Element {
+export default function SchoolHomepage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (

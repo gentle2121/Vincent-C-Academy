@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import "./Contactus.css";
 
-const BG_URL =
-  "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2400&auto=format&fit=crop";
-
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.17, 0.67, 0.83, 0.67] } },
 };
 
 export default function ContactPage() {
@@ -16,11 +13,11 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState({ type: "", message: "" });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ type: "loading", message: "Sending..." });
 
@@ -44,48 +41,39 @@ export default function ContactPage() {
 
   return (
     <div className="contact-page">
-      {/* Background */}
-      <div className="school-bg" style={{ backgroundImage: `url(${BG_URL})` }} />
-      <div className="overlay" />
-
       {/* Navigation */}
       <header className="vc-header">
-              <div className="vc-logo">
-                <GraduationCap className="vc-icon" color="#fff" />
-                <span style={{ color: "#fff" }}>Vincent C Academy</span>
-              </div>
-      
-              {/* Nav Links */}
-              <nav className={menuOpen ? "vc-nav open" : "vc-nav"}>
-                <ul>
-                  <li><a href="/" onClick={() => setMenuOpen(false)}>Home</a></li>
-                  <li><a href="/Aboutus" onClick={() => setMenuOpen(false)}>About Us</a></li>
-                  <li><a href="/Admissions" onClick={() => setMenuOpen(false)}>Admissions</a></li>
-                  <li><a href="/Event" onClick={() => setMenuOpen(false)}>Event</a></li>
-                  <li><a href="/Contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
-                  <li><a href="/Parentforum" onClick={() => setMenuOpen(false)}>Parents Forum</a></li>
-                </ul>
-              </nav>
-      
-              {/* Hamburger */}
-              <div
-                className={`vc-hamburger ${menuOpen ? "active" : ""}`}
-                onClick={() => setMenuOpen(!menuOpen)}
-              >
-                <div className="vc-line"></div>
-                <div className="vc-line"></div>
-                <div className="vc-line"></div>
-              </div>
-            </header>
-      
+        <div className="vc-logo">
+          <GraduationCap className="vc-icon" color="#fff" />
+          <span style={{ color: "#fff" }}>Vincent C Academy</span>
+        </div>
+
+        {/* Nav Links */}
+        <nav className={menuOpen ? "vc-nav open" : "vc-nav"}>
+          <ul>
+            <li><a href="/" onClick={() => setMenuOpen(false)}>Home</a></li>
+            <li><a href="/Aboutus" onClick={() => setMenuOpen(false)}>About Us</a></li>
+            <li><a href="/Admissions" onClick={() => setMenuOpen(false)}>Admissions</a></li>
+            <li><a href="/Event" onClick={() => setMenuOpen(false)}>Event</a></li>
+            <li><a href="/Contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+            <li><a href="/Parentforum" onClick={() => setMenuOpen(false)}>Parents Forum</a></li>
+          </ul>
+        </nav>
+
+        {/* Hamburger */}
+        <div
+          className={`vc-hamburger ${menuOpen ? "active" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <div className="vc-line"></div>
+          <div className="vc-line"></div>
+          <div className="vc-line"></div>
+        </div>
+      </header>
+
       {/* Hero */}
       <section className="hero">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          className="hero-content"
-        >
+        <motion.div variants={fadeUp} initial="hidden" animate="show" className="hero-content">
           <h1>Contact Us</h1>
           <p>We’d love to hear from you. Reach out with any questions.</p>
         </motion.div>
@@ -93,12 +81,7 @@ export default function ContactPage() {
 
       {/* Contact Grid */}
       <section className="section">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
+        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
           <div className="card-box contact-grid">
             {/* Map */}
             <div className="map-container">
@@ -133,7 +116,7 @@ export default function ContactPage() {
                 <textarea
                   name="message"
                   placeholder="Your Message"
-                  rows="5"
+                  rows={5}
                   value={formData.message}
                   onChange={handleChange}
                   required
@@ -155,7 +138,7 @@ export default function ContactPage() {
               </div>
 
               <div className="social-links">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a> |
+                <a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a> |{" "}
                 <a href="https://twitter.com" target="_blank" rel="noreferrer">Twitter</a>
               </div>
             </div>
@@ -165,7 +148,7 @@ export default function ContactPage() {
 
       {/* Footer */}
       <footer className="footer">
-        © {new Date().getFullYear()} Vincent c Academy. All rights reserved.
+        © {new Date().getFullYear()} Vincent C Academy. All rights reserved.
       </footer>
 
       {/* Floating WhatsApp */}

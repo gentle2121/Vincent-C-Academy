@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { GraduationCap, CalendarDays, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import "./Event.css";
@@ -69,7 +69,7 @@ const eventsData = [
   },
 ];
 
-export default function EventsPage(): JSX.Element {
+export default function EventsPage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -138,10 +138,10 @@ export default function EventsPage(): JSX.Element {
                 </p>
                 <p className="vc-event-desc">{event.description}</p>
                 <div className="vc-event-actions">
-                  <a href="#" className="vc-btn vc-primary">
+                  <a href="/EventDetails" className="vc-btn vc-primary">
                     Learn More <ArrowRight size={16} />
                   </a>
-                  <a href="#" className="vc-btn vc-secondary">Register</a>
+                  <a href="/RegisterEvent" className="vc-btn vc-secondary">Register</a>
                 </div>
               </div>
             </motion.div>

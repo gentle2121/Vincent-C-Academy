@@ -1,7 +1,7 @@
 /* 🎨 General Styles */
 .primary-school {
   font-family: "Segoe UI", Arial, sans-serif;
-  background: url("/images/primary-bg.jpg") no-repeat center center/cover;
+  background-color: rgb(196, 192, 188);
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, FormEvent } from "react";
 import { GraduationCap, LogOut, MessageSquarePlus } from "lucide-react";
 import "./Parentforum.css";
-import BG_URL from "../assets/Boarding-Common-Room-e1538503886336.jpg";
 
 const API_URL = "https://backend-one-py48.onrender.com/api/forum";
 
@@ -175,7 +174,7 @@ export default function ParentsForum(): JSX.Element {
         </div>
       </header>
 
-      {/* ✅ Forum Content */}
+      {/* Forum Content */}
       {!isAuthenticated ? (
         <section className="login-section">
           <div className="login-card">
@@ -218,7 +217,7 @@ export default function ParentsForum(): JSX.Element {
             </button>
           </div>
 
-          {/* ✅ New Post */}
+          {/* New Post */}
           <div className="new-post-card">
             <h3>
               <MessageSquarePlus size={18} /> Start a Discussion
@@ -242,7 +241,7 @@ export default function ParentsForum(): JSX.Element {
             </form>
           </div>
 
-          {/* ✅ Discussions */}
+          {/* Discussions */}
           <div className="discussions">
             {fetching ? (
               <p>Loading discussions...</p>
@@ -253,7 +252,6 @@ export default function ParentsForum(): JSX.Element {
                   <p>{d.body}</p>
                   <small>By {d.createdBy || "Parent"}</small>
 
-                  {/* Replies */}
                   <div className="replies">
                     {d.replies?.length > 0 ? (
                       d.replies.map((r: any, ridx: number) => (
@@ -266,7 +264,6 @@ export default function ParentsForum(): JSX.Element {
                     )}
                   </div>
 
-                  {/* Reply Form */}
                   <div className="reply-box">
                     <input
                       type="text"
@@ -297,7 +294,7 @@ export default function ParentsForum(): JSX.Element {
 
       {/* Footer */}
       <footer className="footer">
-        © {new Date().getFullYear()} Vincent c Academy. All rights reserved.
+        © {new Date().getFullYear()} Vincent C Academy. All rights reserved.
       </footer>
 
       {/* Floating WhatsApp */}

@@ -181,28 +181,7 @@
   color: #1a4ed4;
 }
 
-/* =======================
-   Contact Section
-======================= */
-/* .contact-section {
-  justify-content: center;
-  text-align: center;
-  padding: 3rem 2rem;
-  background: #fff;
-  border-radius: 12px;
-  max-width: 900px;
-  margin: 3rem auto;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-}
-.contact-section h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #1a4ed4;
-} */
-/* .contact-section p {
-  margin: 0.3rem 0;
-  color: #333;
-} */
+
 .social-links {
   margin-top: 1rem;
 }

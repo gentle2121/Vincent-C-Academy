@@ -58,87 +58,106 @@ export default function Registration() {
     }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
 
-    // ✅ Step 1: Register student
-    if (step === 1) {
-  try {
-    const formDataToSend = new FormData();
 
-    // append all fields
-    for (const key in formData) {
-      const value = (formData as any)[key];
-      if (value !== null && value !== "") {
-        formDataToSend.append(key, value);
+
+const handleSubmit = async (e: FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+
+  // ✅ Step 1: Only send required fields
+  if (step === 1) {
+    try {
+      const payload = {
+        studentEmail: formData.studentEmail,
+        surname: formData.surname,
+        firstName: formData.firstName,
+        presentSchool: formData.presentSchool,
+        dob: formData.dob,
+        placeOfBirth: formData.placeOfBirth,
+        gender: formData.gender,
+      };
+
+      const response = await fetch("https://backend-one-py48.onrender.com/api/Student", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+      console.log("Step 1 response:", data);
+
+      if (response.ok && data.success) {
+        setStudentCode(data.studentCode); // ✅ store generated studentCode
+        setStep(2);
+      } else {
+        alert("Error: " + (data.message || data.error || "Unknown error"));
       }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to create student. Try again.");
+    } finally {
+      setLoading(false);
     }
-
-    const response = await fetch("https://backend-one-py48.onrender.com/api/Student", {
-      method: "POST",
-      body: formDataToSend, // don't set Content-Type, browser will add it
-    });
-
-    const data = await response.json();
-    if (response.ok && data.success) {
-      setStudentCode(data.studentCode);
-      setStep(2);
-    } else {
-      alert("Error: " + (data.message || data.error || "Unknown error"));
-    }
-  } catch (err) {
-    console.error(err);
-    alert("Failed to create student. Try again.");
-  } finally {
-    setLoading(false);
+    return;
   }
-  return;
-}
 
-
-    // ✅ Step 6: Final Submit
-   if (step === 6) {
-  try {
-    const formDataToSend = new FormData();
-    for (const key in formData) {
-      const value = (formData as any)[key];
-      if (value !== null && value !== "") {
-        formDataToSend.append(key, value);
+  // ✅ Step 6: Final Submit (files + parent info + payment)
+  if (step === 6) {
+    try {
+      const formDataToSend = new FormData();
+      for (const key in formData) {
+        const value = (formData as any)[key];
+        if (value !== null && value !== "") {
+          formDataToSend.append(key, value);
+        }
       }
+      formDataToSend.append("studentCode", studentCode);
+
+      const response = await fetch("https://backend-one-py48.onrender.com/api/Student/finalize", {
+        method: "POST",
+        body: formDataToSend, // don't set Content-Type manually
+      });
+
+      const data = await response.json();
+      console.log("Step 6 response:", data);
+
+      if (response.ok && data.success) {
+        setStep(7);
+      } else {
+        alert("Failed: " + (data.message || data.error || "Unknown error"));
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
     }
-    formDataToSend.append("studentCode", studentCode);
-
-
-const response = await fetch("https://backend-one-py48.onrender.com/api/Student/finalize", {
-      method: "POST",
-      body: formDataToSend, // don't set Content-Type!
-    });
-
-
-
-    const data = await response.json();
-
-    if (response.ok && data.success) {
-      setStep(7);
-    } else {
-      alert("Failed: " + (data.message || data.error || "Unknown error"));
-    }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    alert("Something went wrong. Please try again later.");
-  } finally {
-    setLoading(false);
+    return;
   }
-  return;
-}
+
+  // ✅ For steps 2–5 just go to next
+  setStep(step + 1);
+  setLoading(false);
+};
 
 
 
-    setStep(step + 1);
-    setLoading(false);
-  };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   // ✅ Download Slip
   const handleDownloadSlip = () => {
     const slip = document.getElementById("printable-slip");
